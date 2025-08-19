@@ -22,7 +22,7 @@ var target = ""
 
 plugins {
     // Apply the Kotlin JVM plugin to add support for Kotlin.
-    id("org.jetbrains.kotlin.jvm") version "1.6.10"
+    id("org.jetbrains.kotlin.jvm") version "1.9.10"
     id("com.github.johnrengelman.shadow") version "7.1.2"
     // maven() // no longer needed in gradle 7
 }
@@ -88,6 +88,12 @@ dependencies {
         java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
         // spigot/paper api
         compileOnly("io.papermc.paper:paper-api:1.18.2-R0.1-SNAPSHOT")
+    } else if ( project.hasProperty("1.20") == true ) {
+        target = "1.20.4"
+        // java must be up to 17 for 1.20
+        java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+        // spigot/paper api
+        compileOnly("io.papermc.paper:paper-api:1.20.4-R0.1-SNAPSHOT")
     }
 }
 
@@ -95,9 +101,9 @@ tasks {
     named<ShadowJar>("shadowJar") {
         // verify valid target minecraft version
         doFirst {
-            val supportedMinecraftVersions = setOf("1.16.5", "1.18.2")
+            val supportedMinecraftVersions = setOf("1.16.5", "1.18.2", "1.20.4")
             if ( !supportedMinecraftVersions.contains(target) ) {
-                throw Exception("Invalid Minecraft version! Supported versions are: 1.16, 1.18")
+                throw Exception("Invalid Minecraft version! Supported versions are: 1.16, 1.18, 1.20")
             }
         }
 

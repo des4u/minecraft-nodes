@@ -48,6 +48,24 @@ run with following:
 ```
 
 
+## 1.a. Building main server plugin (1.20.4)
+Requirements:
+- Java JDK 17 (required for 1.20.4)
+
+Go inside `nodes/` and run
+```
+./gradlew build -P 1.20
+```
+Built `nodes-1.20.4-SNAPSHOT-VERSION.jar` will appear in `build/libs/*.jar`.
+
+To build without kotlin shaded into the jar (e.g. if using separate kotlin
+runtime plugin for example my <https://github.com/phonon/minecraft-kotlin>),
+run with following:
+```
+./gradlew build -P 1.20 -P no-kotlin
+```
+
+
 ## 1.b. (OLD) Building main server plugin old version (1.16.5)
 Requirements:
 - Java JDK 16 (1.16.5 required plugin target java version)
@@ -136,7 +154,7 @@ are edited in `nodes/` source before re-building documentation site.
 
 ## 4. Building ports plugin
 Requirements:
-- Java JDK 16 (current plugin target java version)
+- Java JDK 17 (for 1.18.2 and 1.20.4)
 
 ### 1. Build main `nodes` plugin first (follow steps above).
 Make sure there is the nodes output `.jar` at path
@@ -146,10 +164,23 @@ nodes/build/libs/nodes.jar
 
 ### 2. Build ports plugin `nodes-ports.jar`:
 Go inside `ports/` and run
+
+For 1.18.2:
+```
+./gradlew build -P 1.18
+```
+
+For 1.20.4:
+```
+./gradlew build -P 1.20
+```
+
+For 1.16.5 (legacy):
 ```
 ./gradlew build -P 1.16
 ```
-Built `.jar` will appear in `build/libs/nodes-ports-1.16-*.jar`.
+
+Built `.jar` will appear in `build/libs/nodes-ports-VERSION-*.jar`.
 
 
 

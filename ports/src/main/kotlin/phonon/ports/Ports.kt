@@ -56,8 +56,8 @@ import org.bukkit.event.player.PlayerBucketEmptyEvent
 import org.bukkit.scheduler.BukkitTask
 import org.bukkit.scheduler.BukkitRunnable
 
-import org.bukkit.craftbukkit.v1_18_R2.entity.CraftEntity
-import org.bukkit.craftbukkit.v1_18_R2.entity.CraftPlayer
+import org.bukkit.craftbukkit.v1_20_R3.entity.CraftEntity
+import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket
 
 import phonon.nodes.Nodes
